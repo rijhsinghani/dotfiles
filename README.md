@@ -10,29 +10,43 @@ cd ~/dotfiles
 ./setup.sh
 ```
 
+That's it! iCloud will automatically sync changes across all your Macs.
+
 ## 📁 Files Managed
 
 | Source File | Symlinked To | Description |
 |------------|--------------|-------------|
-| `claude/CLAUDE.md` | `~/.claude/CLAUDE.md` | Claude Code global instructions (196 lines) |
+| `~/Library/Mobile Documents/com~apple~CloudDocs/.claude-config/CLAUDE.md` | `~/.claude/CLAUDE.md` | Claude Code global instructions (196 lines) |
+
+## 🎯 How It Works
+
+- **Primary sync**: iCloud Drive (automatic, zero-maintenance)
+- **Backup/history**: This git repo (manual commits for version control)
+- **Symlink**: `~/.claude/CLAUDE.md` → iCloud location
+
+Edit `~/.claude/CLAUDE.md` on any Mac, and it auto-syncs to all others via iCloud. No git commands needed!
 
 ## 📝 Updating Configuration
 
-After editing `~/.claude/CLAUDE.md` on any machine:
-
+Just edit the file normally:
 ```bash
-cd ~/dotfiles
-git add claude/CLAUDE.md
-git commit -m "Update Claude configuration"
-git push
+# Edit on either machine
+vim ~/.claude/CLAUDE.md
+
+# iCloud syncs automatically within seconds
+# No git commands required!
 ```
 
-## 🔄 Syncing to Other Machine
+## 🔄 Optional: Save Git History
+
+To keep version history (optional):
 
 ```bash
 cd ~/dotfiles
-git pull
-./setup.sh  # Re-run to ensure symlinks are correct (optional)
+cp ~/Library/Mobile\ Documents/com~apple~CloudDocs/.claude-config/CLAUDE.md claude/CLAUDE.md
+git add claude/CLAUDE.md
+git commit -m "Update Claude configuration: [describe change]"
+git push
 ```
 
 ## ✅ Verify Sync
