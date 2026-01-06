@@ -1,0 +1,14 @@
+# Never commit credentials
+*.env
+.credentials.env
+credentials/
+
+# OS files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Backups
+*.backup
+*.bak
